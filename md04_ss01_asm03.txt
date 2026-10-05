@@ -1,0 +1,20 @@
+1. DDD là gì (tóm tắt)
+
+DDD (Eric Evans) là cách tiếp cận bắt đầu từ việc hiểu sâu "lõi" nghiệp vụ (Domain), rồi xây mô hình phần mềm phản ánh đúng nghiệp vụ đó, thay vì bắt đầu từ database hay công nghệ.
+
+2. Ưu điểm
+
+Ngôn ngữ chung (Ubiquitous Language): Lập trình viên và chuyên gia nghiệp vụ dùng cùng một bộ thuật ngữ trong họp, tài liệu và cả code. "Đơn hàng" trong code (Order) có nghĩa y hệt "Đơn hàng" ở phòng kinh doanh, giảm hiểu nhầm và làm sai yêu cầu.
+Gắn kết nghiệp vụ và code: Code phản ánh đúng cách doanh nghiệp vận hành, nên đọc code là hiểu nghiệp vụ, thay đổi nghiệp vụ thì biết ngay sửa ở đâu.
+Ranh giới rõ ràng (Bounded Context): Mỗi vùng nghiệp vụ có mô hình riêng, sửa dịch vụ "Kho" không làm hỏng logic "Giao hàng". Đây chính là liều thuốc cho "Big Ball of Mud", và là cơ sở để tách Microservices.
+Tập trung vào giá trị cốt lõi: Ưu tiên nguồn lực cho phần quan trọng nhất (Core Subdomain), phần phụ trợ làm đơn giản hoặc mua ngoài.
+Code sạch, dễ test: Các khái niệm như Entity, Value Object, Aggregate giúp đóng gói quy tắc nghiệp vụ, ít lỗi hơn.
+
+3. Nhược điểm / Khó khăn
+
+Tốn thời gian, chi phí: Phải tổ chức nhiều buổi hội thảo (như Event Storming) với chuyên gia nghiệp vụ trước khi code.
+Đường cong học tập cao: Đội ngũ cần hiểu các khái niệm trừu tượng như Aggregate Root, Domain Event, Bounded Context.
+Nguy cơ thiết kế quá mức: Áp dụng cứng nhắc cho cả những phần không quan trọng sẽ làm hệ thống cồng kềnh vô ích.
+Không phù hợp dự án nhỏ/CRUD đơn giản: Chi phí lớn hơn lợi ích.
+Giao tiếp liên context phức tạp: Giữ nhất quán khi Domain Event kích hoạt hành động ở context khác cần Message Broker, làm tăng độ trễ và độ phức tạp.
+Phụ thuộc chuyên gia nghiệp vụ: Nếu họ không tham gia đầy đủ thì mô hình sẽ sai.
